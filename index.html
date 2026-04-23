@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mary Grace Leatherbury — Portfolio</title>
+  <meta name="description" content="Mary Grace Leatherbury — Computer Science student at Clemson University with a focus on product management, UX, and brand communications." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #f4ede2;
+      --cream-deep: #ebe1d1;
+      --ink: #1a1a1a;
+      --ink-soft: #3a3a3a;
+      --rule: #c9bfae;
+      --accent: #8a3b1f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 19px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    a:hover { border-color: var(--accent); color: var(--accent); }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    /* ——— layout ——— */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ——— nav ——— */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+    nav .mark {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      border: none;
+    }
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul a {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      color: var(--ink-soft);
+    }
+    nav ul a:hover { color: var(--accent); }
+
+    /* ——— hero ——— */
+    header.hero {
+      padding: 140px 0 120px;
+      border-bottom: 1px solid var(--rule);
+    }
+    header.hero .meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    header.hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 40px;
+    }
+    header.hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+    header.hero .lede {
+      max-width: 620px;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0 0 48px;
+    }
+    header.hero .tagline {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ——— section shell ——— */
+    section {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: baseline;
+    }
+    .section-head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -0.01em;
+      margin: 0;
+      line-height: 1.05;
+    }
+    .section-head h2 em { font-style: italic; color: var(--accent); }
+
+    /* ——— about ——— */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+    }
+    .about-body { max-width: 680px; }
+    .about-body p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+    .about-body p:first-child::first-letter {
+      font-size: 72px;
+      float: left;
+      line-height: 0.85;
+      padding: 8px 12px 0 0;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .manifesto {
+      margin-top: 60px;
+      padding: 40px;
+      border: 1px solid var(--rule);
+      background: var(--cream-deep);
+    }
+    .manifesto p {
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .manifesto .mono { margin-bottom: 16px; }
+
+    /* ——— values ——— */
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .value h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 26px;
+      margin: 16px 0 10px;
+    }
+    .value p {
+      font-size: 17px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .value .num {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* ——— experience ——— */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr auto;
+      gap: 40px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .exp-item:last-child { border-bottom: 1px solid var(--rule); }
+    .exp-item h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 24px;
+      margin: 0 0 4px;
+    }
+    .exp-item .role {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 18px;
+    }
+    .exp-item .desc {
+      margin: 10px 0 0;
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 520px;
+    }
+
+    /* ——— projects ——— */
+    .project {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 60px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .project:first-of-type { border-top: none; padding-top: 0; }
+    .project-meta .mono { display: block; margin-bottom: 8px; }
+    .project-meta .num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .project-body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(30px, 3.6vw, 42px);
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .project-body h3 em { font-style: italic; }
+    .project-body .sub {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 28px 0;
+    }
+    .project-grid h5 {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+    .project-grid p {
+      font-size: 17px;
+      line-height: 1.55;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+    .project-summary {
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.5;
+      padding: 20px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 28px 0 20px;
+    }
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    /* ——— contact ——— */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+    }
+    .contact-body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: clamp(40px, 5.5vw, 64px);
+      line-height: 1.05;
+      margin: 0 0 32px;
+      letter-spacing: -0.01em;
+    }
+    .contact-body h3 em { font-style: italic; color: var(--accent); }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px 48px;
+      margin-top: 40px;
+    }
+    .contact-links a {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding-bottom: 4px;
+    }
+
+    /* ——— footer ——— */
+    footer {
+      padding: 40px 0;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ——— responsive ——— */
+    @media (max-width: 760px) {
+      .wrap { padding: 0 24px; }
+      nav ul { gap: 20px; }
+      nav ul a { font-size: 10px; }
+      header.hero { padding: 80px 0 70px; }
+      header.hero .meta-row { flex-direction: column; gap: 8px; margin-bottom: 40px; }
+      .section-head,
+      .about-grid,
+      .project,
+      .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .values { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      section { padding: 70px 0; }
+      .manifesto { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ——— NAV ——— -->
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="mark">Mary Grace Leatherbury</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ——— HERO ——— -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="meta-row">
+        <span class="mono">Portfolio — 2026</span>
+        <span class="mono">Clemson, SC</span>
+      </div>
+      <h1>
+        Building brands<br />
+        with <em>intent</em>,<br />
+        code with <em>care</em>.
+      </h1>
+      <p class="lede">
+        I'm a Computer Science student at Clemson University pairing a minor in Brand Communications with a focus on product management and user experience. I work where strategy, story, and systems meet.
+      </p>
+      <span class="tagline">Product &middot; UX &middot; Brand</span>
+    </div>
+  </header>
+
+  <!-- ——— ABOUT ——— -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">01 — About</span>
+        <h2>A technologist with a <em>brand</em> mindset.</h2>
+      </div>
+
+      <div class="about-grid">
+        <span class="mono">My Story</span>
+        <div class="about-body">
+          <p>
+            I study Computer Science at Clemson University, where I'm pursuing a minor in Brand Communications and expecting to graduate in May 2028. My path is intentionally interdisciplinary: I want to build products that are not only well-engineered but thoughtfully communicated — where the thing being made and the way it reaches people are designed together.
+          </p>
+          <p>
+            My interests sit at the intersection of product management and UX research. I care about understanding why people use what they use, then translating that insight into decisions a team can actually ship. Outside the technical side, I'm a long-time advocate for women in STEM and believe representation is a design problem worth solving in its own right.
+          </p>
+          <p>
+            When I'm not coding or writing briefs, you'll find me refining a Notion system, overthinking typography, or practicing my French.
+          </p>
+        </div>
+      </div>
+
+      <div class="manifesto">
+        <span class="mono">Manifesto</span>
+        <p>
+          "Good products are built. Great products are understood. I'm here for the second kind — where curiosity meets craft, and where the work serves the human on the other end of the screen."
+        </p>
+      </div>
+
+      <div class="values">
+        <div class="value">
+          <span class="num">/ 01</span>
+          <h4>Curiosity first</h4>
+          <p>Every good decision starts with a better question. I ask more than I assume.</p>
+        </div>
+        <div class="value">
+          <span class="num">/ 02</span>
+          <h4>Built to last</h4>
+          <p>I care about the details that compound — typography, structure, tone, systems.</p>
+        </div>
+        <div class="value">
+          <span class="num">/ 03</span>
+          <h4>People, then pixels</h4>
+          <p>Technology is only valuable when it respects the humans it's built for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— EXPERIENCE ——— -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">02 — Experience</span>
+        <h2>Where I've been <em>building</em>.</h2>
+      </div>
+
+      <div class="exp-item">
+        <span class="mono">Aug 2026 —</span>
+        <div>
+          <h3>Mercedes-Benz U.S. International</h3>
+          <div class="role">Co-op — Tuscaloosa, AL</div>
+          <p class="desc">
+            Incoming co-op joining MBUSI to contribute to technology and operations at Mercedes-Benz's U.S. manufacturing headquarters.
+          </p>
+        </div>
+        <span class="mono">Incoming</span>
+      </div>
+
+      <div class="exp-item">
+        <span class="mono">2025 — 2026</span>
+        <div>
+          <h3>Eleos Technologies</h3>
+          <div class="role">QA &amp; Software Testing</div>
+          <p class="desc">
+            Supported software testing workflows and quality assurance cycles for a growing tech company, balancing the role alongside a full course load.
+          </p>
+        </div>
+        <span class="mono">Part-time</span>
+      </div>
+
+      <div class="exp-item">
+        <span class="mono">2024 — Present</span>
+        <div>
+          <h3>Clemson University</h3>
+          <div class="role">B.S. Computer Science — Minor in Brand Communications</div>
+          <p class="desc">
+            LIFE Scholar with STEM enhancement. Coursework spans Java, data structures, discrete math, HCI-adjacent research, and brand strategy.
+          </p>
+        </div>
+        <span class="mono">May 2028</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— WORK ——— -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">03 — Selected Work</span>
+        <h2>Projects <em>at the</em> intersection.</h2>
+      </div>
+
+      <!-- PROJECT 01 -->
+      <article class="project">
+        <div class="project-meta">
+          <span class="mono">Project 01</span>
+          <div class="num">01</div>
+          <span class="mono">Brand Comms · GC 3700</span>
+        </div>
+        <div class="project-body">
+          <h3>Fahlo — <em>A Brand Playbook</em></h3>
+          <p class="sub">Brand strategy and anthem storyboard for the wildlife tracking bracelet company.</p>
+
+          <div class="project-grid">
+            <div>
+              <h5>Challenge</h5>
+              <p>
+                Fahlo has a compelling purpose — every bracelet funds wildlife tracking — but needed a sharper articulation of how that purpose lives across touchpoints and campaigns.
+              </p>
+            </div>
+            <div>
+              <h5>Solution</h5>
+              <p>
+                Built a full Brand Playbook and an anthem video storyboard that ties product, purpose, and storytelling into one cohesive system teams can activate.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <div>
+              <h5>Insight</h5>
+              <p>People don't just want to buy — they want to belong to something that matters.</p>
+            </div>
+            <div>
+              <h5>Strategy</h5>
+              <p>Lead with the animal's story; the product becomes the proof.</p>
+            </div>
+          </div>
+
+          <p class="project-summary">
+            A brand system that turns each bracelet from an accessory into a chapter of a shared conservation story.
+          </p>
+
+          <div class="project-footer">
+            <span>Role — Brand Strategy, Storyboarding</span>
+            <span>Tools — Canva, Adobe Suite</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 02 -->
+      <article class="project">
+        <div class="project-meta">
+          <span class="mono">Project 02</span>
+          <div class="num">02</div>
+          <span class="mono">CS · CPSC 2150</span>
+        </div>
+        <div class="project-body">
+          <h3>Ataxx — <em>A Board Game in Java</em></h3>
+          <p class="sub">Object-oriented implementation and testing of a two-player strategy game.</p>
+
+          <div class="project-grid">
+            <div>
+              <h5>Challenge</h5>
+              <p>
+                Design a clean, testable Java implementation of the Ataxx board game that holds up against an autograder requiring exact method signatures — while collaborating across a three-person team.
+              </p>
+            </div>
+            <div>
+              <h5>Solution</h5>
+              <p>
+                Architected the board logic with clear primary/secondary method separation, then wrote the JUnit test suite covering core gameplay, including placement validation and end-game detection.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <div>
+              <h5>Insight</h5>
+              <p>Good tests aren't an afterthought — they're the spec.</p>
+            </div>
+            <div>
+              <h5>Strategy</h5>
+              <p>Let the interface drive the implementation, not the other way around.</p>
+            </div>
+          </div>
+
+          <p class="project-summary">
+            A collaboratively-built Java game that passed on structure, tests, and team coordination.
+          </p>
+
+          <div class="project-footer">
+            <span>Role — Development, JUnit Testing</span>
+            <span>Partners — Sydney, Riley</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 03 placeholder -->
+      <article class="project">
+        <div class="project-meta">
+          <span class="mono">Project 03</span>
+          <div class="num">03</div>
+          <span class="mono">Coming soon</span>
+        </div>
+        <div class="project-body">
+          <h3>In <em>progress</em>.</h3>
+          <p class="sub">New work from my MBUSI co-op and ongoing coursework, added as it ships.</p>
+          <p class="project-summary">
+            This portfolio grows with me. Check back through Fall 2026 for case studies from Mercedes-Benz and additional Brand Comm projects.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ——— CONTACT ——— -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">04 — Contact</span>
+      </div>
+
+      <div class="contact-grid">
+        <span class="mono">Let's Talk</span>
+        <div class="contact-body">
+          <h3>Open to <em>conversations</em>, collaborations, and co-op opportunities.</h3>
+          <p style="font-size: 19px; color: var(--ink-soft); max-width: 580px;">
+            Whether you're hiring for product, UX, or brand, or you just want to swap notes on a project — I'd love to hear from you.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:hello@marygrace.example">Email</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— FOOTER ——— -->
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Mary Grace Leatherbury</span>
+      <span>Designed &amp; built by hand · Clemson, SC</span>
+    </div>
+  </footer>
+
+</body>
+</html>
